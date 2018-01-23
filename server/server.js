@@ -37,6 +37,7 @@ module.exports = class Server {
             '/graphql',
             graphqlHTTP({
                 schema: schema,
+                rootValue: resolvers,
                 graphiql: true
             })
         );

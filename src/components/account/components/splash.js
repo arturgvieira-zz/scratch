@@ -1,19 +1,22 @@
 import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
-// Components
 
 class Splash extends Component {
     state = {
         api: null
     };
 
-    update = ({ query }) => {
-        this.setState({ api: query });
+    update = ({ getPeople }) => {
+        this.setState({ api: getPeople });
+    };
+
+    componentWillReceiveProps = nextProps => {
+        this.update(nextProps.query);
     };
 
     componentWillMount = () => {
-        this.update(this.props);
+        this.update(this.props.query);
     };
 
     subscribe = () => {
@@ -36,19 +39,23 @@ class Splash extends Component {
     };
 
     componentDidMount() {
-        this.subscribe;
+        this.subscribe();
     }
 
     render = () => {
         const { api } = this.state;
 
-        return <div className="Splash">{api && JSON.stringify(api)}</div>;
+        return (
+            <div className="Splash">
+                {api && api.map((result, index) => <p key={index}>{result}</p>)}
+            </div>
+        );
     };
 }
 
 const query = gql`
     {
-        hello
+        getPeople
     }
 `;
 

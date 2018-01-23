@@ -9,11 +9,7 @@ module.exports = (query, params, column) =>
         .run(query, params)
         .then(result => {
             session.close();
-            if (!(result instanceof Array)) {
-                return result.records[0].get(column);
-            } else {
-                return result.records.map(record => record.get(column));
-            }
+            return result.records.map(record => record.get(column));
         })
         .catch(error => {
             session.close();

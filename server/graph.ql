@@ -1,15 +1,15 @@
 type Query {
-    hello: String!
+    hello: [String!]
     getPerson(id: ID, name: String): String!
     getPeople: [String!]!
 }
 
 type Mutation {
-  createPerson(name: String!): Person!
+  createPerson(name: String!): [Person!]!
 }
 
 type Subscription {
-  personCreated(name: String!): Person!
+  personCreated: String!
 }
 
 type Person {

@@ -5,35 +5,32 @@ const pubsub = new PubSub();
 // The root provides a resolver function for each API endpoint
 module.exports = {
     // Query Resolvers
-    hello: (obj, args, context, info) => {
-        return query(
-            'MATCH (person:Person)-[:SAYS]->(message:Message) RETURN message.name as result',
-            { name: 'Artur Vieira' },
-            'result'
-        );
-    },
-    getPerson: (obj, args, context, info) => {
-        return query(
+    getPerson: async (obj, args, context, info) => {
+        const result = await query(
             'MATCH (person:Person) RETURN person.name as result',
-            args,
+            obj,
             'result'
         );
+        return result;
     },
-    getPeople: (obj, args, context, info) => {
-        return query(
+    getPeople: async (obj, args, context, info) => {
+        const result = await query(
             'MATCH (person:Person) RETURN person.name as result LIMIT 25',
-            args,
+            obj,
             'result'
         );
+        return result;
     },
     // Mutation Resolvers
-    createPerson: (obj, args, context, info) => {
-        const result = query(
-            'CREATE (person:Person) RETURN person as result',
-            args,
+    createPerson: async (obj, args, context, info) => {
+        const result = await query(
+            'CREATE (person:Person {name : $name}) RETURN person.name as result',
+            obj,
             'result'
         );
-        pubsub.publish('subscription', { name: result.name });
+        console.log(obj, result);
+        //pubsub.publish('subscription', { name: result[0] });
+        return result;
     },
     // Subscription Resolvers
     personCreated: (obj, args, context, info) => {
