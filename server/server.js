@@ -1,6 +1,7 @@
 const express = require('express');
 const graphqlHTTP = require('express-graphql');
-const { buildSchema } = require('graphql');
+const { buildSchema, execute, subscribe } = require('graphql');
+const { SubscriptionServer } = require('subscriptions-transport-ws');
 const cors = require('cors');
 const morgan = require('morgan');
 const resolvers = require('./resolvers');
@@ -15,15 +16,31 @@ module.exports = class Server {
         // app.use('/', express.static('build'));
         // Construct a schema, using GraphQL schema language
         const schema = buildSchema(init);
+
+        app.listen(
+            8080,
+            () =>
+                new SubscriptionServer(
+                    {
+                        execute,
+                        subscribe,
+                        schema
+                    },
+                    {
+                        server: app,
+                        path: '/subscriptions'
+                    }
+                )
+        );
+
         app.use(
             '/graphql',
             graphqlHTTP({
                 schema: schema,
-                rootValue: resolvers,
                 graphiql: true
             })
         );
-        app.listen(8080);
+
         console.log('Running a GraphQL API server at localhost/graphql');
     }
 };

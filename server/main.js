@@ -3,7 +3,7 @@ const Util = require('./util.js');
 
 class Main {
     run() {
-        const server = new Server('./server/server.js');
+        const server = new Server();
         const util = new Util('./server/graph.ql');
         util.process();
 

@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import './main.css';
 
 // Components
-import HelloWorld from './hello/hello';
+import Account from './account/account';
 
 class Main extends Component {
     render() {
         return (
             <div className="Main">
-                <HelloWorld />
+                <Account />
             </div>
         );
     }
