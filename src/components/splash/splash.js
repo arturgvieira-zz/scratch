@@ -23,10 +23,10 @@ class Splash extends Component {
         this.props.query.subscribeToMore({
             document: subscription,
             updateQuery: (previous, { subscriptionData }) => {
-                console.log('splash');
+                console.log(previous, subscriptionData);
                 const newListOfPeople = [
-                    subscriptionData.data.personCreated.name,
-                    ...previous.api
+                    subscriptionData.data.personChannel,
+                    ...previous.getPeople
                 ];
                 const result = {
                     ...previous,
@@ -58,6 +58,7 @@ class Splash extends Component {
 const query = gql`
     {
         getPeople {
+            id
             name
         }
     }
@@ -65,7 +66,8 @@ const query = gql`
 
 const subscription = gql`
     subscription {
-        personCreated {
+        personChannel {
+            id
             name
         }
     }
