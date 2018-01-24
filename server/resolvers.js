@@ -14,10 +14,7 @@ module.exports = {
                     'person'
                 );
                 //Dev only console
-                console.log(
-                    '[#] [QUERY]: getPersonById(): [>] : ',
-                    JSON.stringify(result, null, 4)
-                );
+                console.log('[#] [QUERY]: getPersonById(): [>] : ');
                 if (result) {
                     result = result.map(result => ({
                         ...result['properties']
@@ -38,10 +35,7 @@ module.exports = {
                     'person'
                 );
                 //Dev only console
-                console.log(
-                    '[#] [QUERY]: getPersonByName(): [>] : ',
-                    JSON.stringify(result, null, 4)
-                );
+                console.log('[#] [QUERY]: getPersonByName(): [>] : ');
                 if (result) {
                     result = result.map(result => ({
                         ...result['properties']
@@ -62,10 +56,7 @@ module.exports = {
                     'person'
                 );
                 //Dev only console
-                console.log(
-                    '[#] [QUERY]: getPeople(): [>] : ',
-                    JSON.stringify(results, null, 4)
-                );
+                console.log('[#] [QUERY]: getPeople(): [>] : ');
                 if (results) {
                     return results.map(result => ({ ...result['properties'] }));
                 } else {
@@ -87,10 +78,7 @@ module.exports = {
                     'person'
                 );
                 //Dev only console
-                console.log(
-                    '[#] [MUTATION]: createPerson(): [>] : ',
-                    JSON.stringify(result, null, 4)
-                );
+                console.log('[#] [MUTATION]: createPerson(): [>] : ');
                 if (result) {
                     result = result.map(result => ({
                         ...result['properties']
@@ -114,10 +102,7 @@ module.exports = {
                     null
                 );
                 //Dev only console
-                console.log(
-                    '[#] [MUTATION]: removePerson(): [>] : ',
-                    JSON.stringify(result, null, 4)
-                );
+                console.log('[#] [MUTATION]: removePerson(): [>] : ');
                 pubSub.publish('personChannel', { personChannel: args });
                 return args;
             } catch (err) {
