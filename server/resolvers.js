@@ -56,10 +56,17 @@ module.exports = {
                     args,
                     'person'
                 );
-                result = result.map(result => ({ ...result['properties'] }));
-                console.log(result[0]);
-                pubSub.publish('personChannel', { personChannel: result[0] });
-                return result[0];
+                if (result) {
+                    result = result.map(result => ({
+                        ...result['properties']
+                    }));
+                    pubSub.publish('personChannel', {
+                        personChannel: result[0]
+                    });
+                    return result[0];
+                } else {
+                    return null;
+                }
             } catch (err) {
                 console.log(
                     'ERROR: server/resolver.js, function: createPerson'
