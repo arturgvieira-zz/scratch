@@ -23,15 +23,14 @@ class Splash extends Component {
         this.props.query.subscribeToMore({
             document: subscription,
             updateQuery: (previous, { subscriptionData }) => {
-                const updates = [
-                    subscriptionData.data.name,
-                    ...previous.api.data
+                console.log('splash');
+                const newListOfPeople = [
+                    subscriptionData.data.personCreated.name,
+                    ...previous.api
                 ];
                 const result = {
                     ...previous,
-                    api: {
-                        data: updates
-                    }
+                    getPeople: newListOfPeople
                 };
                 return result;
             }
@@ -47,7 +46,10 @@ class Splash extends Component {
 
         return (
             <div className="Splash">
-                {api && api.map((result, index) => <p key={index}>{result}</p>)}
+                {api &&
+                    api.map((result, index) => (
+                        <p key={index}>{result.name}</p>
+                    ))}
             </div>
         );
     };
@@ -55,7 +57,9 @@ class Splash extends Component {
 
 const query = gql`
     {
-        getPeople
+        getPeople {
+            name
+        }
     }
 `;
 

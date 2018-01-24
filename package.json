@@ -23,7 +23,8 @@
         "react-apollo": "^2.0.4",
         "react-dom": "^16.2.0",
         "react-scripts": "1.1.0",
-        "subscriptions-transport-ws": "^0.9.5"
+        "subscriptions-transport-ws": "^0.9.5",
+        "uuid": "^3.2.1"
     },
     "scripts": {
         "start": "concurrently \"react-scripts start\" \"nodemon server/main.js\"",

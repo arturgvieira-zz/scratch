@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 // Components
-import Splash from './components/splash';
 // import Register from './components/register/register';
 // import Login from './components/login/login';
 
@@ -23,7 +22,6 @@ class Account extends Component {
         return (
             <div className="Account">
                 {this.state.hasError && this.warningBanner()}
-                <Splash />
             </div>
         );
     };

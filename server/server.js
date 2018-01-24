@@ -17,21 +17,7 @@ module.exports = class Server {
         // Construct a schema, using GraphQL schema language
         const schema = buildSchema(init);
 
-        app.listen(
-            8080,
-            () =>
-                new SubscriptionServer(
-                    {
-                        execute,
-                        subscribe,
-                        schema
-                    },
-                    {
-                        server: app,
-                        path: '/subscriptions'
-                    }
-                )
-        );
+        app.listen(8080);
 
         app.use(
             '/graphql',
@@ -40,6 +26,18 @@ module.exports = class Server {
                 rootValue: resolvers,
                 graphiql: true
             })
+        );
+
+        const subscriptionServer = SubscriptionServer.create(
+            {
+                schema,
+                execute,
+                subscribe
+            },
+            {
+                server: app,
+                path: '/socket'
+            }
         );
 
         console.log('Running a GraphQL API server at localhost/graphql');
