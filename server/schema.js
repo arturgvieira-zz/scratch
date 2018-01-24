@@ -3,7 +3,8 @@ const resolvers = require('./resolvers');
 
 const typeDefs = `
 type Query {
-    getPerson(id: String, name: String): Person
+    getPersonByName(name: String): Person
+    getPersonById(id: ID): Person
     getPeople: [Person]
 }
 

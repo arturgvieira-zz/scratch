@@ -6,14 +6,17 @@ const pubSub = new PubSub();
 module.exports = {
     //Query Resolvers
     Query: {
-        getPerson: async (obj, args, context, info) => {
+        getPersonById: async (obj, args, context, info) => {
             try {
                 let result = await query(
                     'MATCH (person:Person {id: $id}) RETURN *',
                     obj,
                     'person'
                 );
-                console.log('QUERY: getPerson()');
+                console.log(
+                    '[#] [QUERY]: getPersonById(): [>] : ',
+                    JSON.stringify(result, null, 4)
+                );
                 if (result) {
                     result = result.map(result => ({
                         ...result['properties']
@@ -23,7 +26,29 @@ module.exports = {
                     return null;
                 }
             } catch (err) {
-                console.log('ERROR: server/resolver.js, function: getPerson');
+                throw new Error(err);
+            }
+        },
+        getPersonByName: async (obj, args, context, info) => {
+            try {
+                let result = await query(
+                    'MATCH (person:Person {name: $name}) RETURN *',
+                    obj,
+                    'person'
+                );
+                console.log(
+                    '[#] [QUERY]: getPersonByName(): [>] : ',
+                    JSON.stringify(result, null, 4)
+                );
+                if (result) {
+                    result = result.map(result => ({
+                        ...result['properties']
+                    }));
+                    return result[0];
+                } else {
+                    return null;
+                }
+            } catch (err) {
                 throw new Error(err);
             }
         },
@@ -34,14 +59,16 @@ module.exports = {
                     obj,
                     'person'
                 );
-                console.log('QUERY: getPeople()');
+                console.log(
+                    '[#] [QUERY]: getPeople(): [>] : ',
+                    JSON.stringify(results, null, 4)
+                );
                 if (results) {
                     return results.map(result => ({ ...result['properties'] }));
                 } else {
                     return [];
                 }
             } catch (err) {
-                console.log('ERROR: server/resolver.js, function: getPeople');
                 throw new Error(err);
             }
         }
@@ -56,6 +83,10 @@ module.exports = {
                     args,
                     'person'
                 );
+                console.log(
+                    '[#] [MUTATION]: createPerson(): [>] : ',
+                    JSON.stringify(result, null, 4)
+                );
                 if (result) {
                     result = result.map(result => ({
                         ...result['properties']
@@ -68,9 +99,6 @@ module.exports = {
                     return null;
                 }
             } catch (err) {
-                console.log(
-                    'ERROR: server/resolver.js, function: createPerson'
-                );
                 throw new Error(err);
             }
         },
@@ -81,12 +109,13 @@ module.exports = {
                     args,
                     null
                 );
+                console.log(
+                    '[#] [MUTATION]: removePerson(): [>] : ',
+                    JSON.stringify(result, null, 4)
+                );
                 pubSub.publish('personChannel', { personChannel: args });
                 return args;
             } catch (err) {
-                console.log(
-                    'ERROR: server/resolver.js, function: removePerson'
-                );
                 throw new Error(error);
             }
         }
@@ -94,7 +123,12 @@ module.exports = {
     Subscription: {
         //Subscription Resolvers
         personChannel: {
-            subscribe: () => pubSub.asyncIterator('personChannel')
+            subscribe: () => {
+                console.log(
+                    '[#] [SUBSCRIPTION]: personChannel(): [>] : Connected'
+                );
+                pubSub.asyncIterator('personChannel');
+            }
         }
     }
 };
