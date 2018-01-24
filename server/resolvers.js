@@ -13,6 +13,7 @@ module.exports = {
                     obj,
                     'person'
                 );
+                //Dev only console
                 console.log(
                     '[#] [QUERY]: getPersonById(): [>] : ',
                     JSON.stringify(result, null, 4)
@@ -36,6 +37,7 @@ module.exports = {
                     obj,
                     'person'
                 );
+                //Dev only console
                 console.log(
                     '[#] [QUERY]: getPersonByName(): [>] : ',
                     JSON.stringify(result, null, 4)
@@ -59,6 +61,7 @@ module.exports = {
                     obj,
                     'person'
                 );
+                //Dev only console
                 console.log(
                     '[#] [QUERY]: getPeople(): [>] : ',
                     JSON.stringify(results, null, 4)
@@ -83,6 +86,7 @@ module.exports = {
                     args,
                     'person'
                 );
+                //Dev only console
                 console.log(
                     '[#] [MUTATION]: createPerson(): [>] : ',
                     JSON.stringify(result, null, 4)
@@ -109,6 +113,7 @@ module.exports = {
                     args,
                     null
                 );
+                //Dev only console
                 console.log(
                     '[#] [MUTATION]: removePerson(): [>] : ',
                     JSON.stringify(result, null, 4)
