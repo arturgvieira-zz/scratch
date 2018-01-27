@@ -3,7 +3,7 @@ import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import './splash.css';
 // Components
-import Hero from './components/hero/hero';
+import Hero from './components/hero';
 
 class Splash extends Component {
     state = {

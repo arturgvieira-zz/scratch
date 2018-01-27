@@ -17,6 +17,13 @@ body {
     position: relative;
 }
 
+.error {
+    width: 100%;
+    height: 50px;
+    background: red;
+    color: white;
+}
+
 /* Text */
 
 h1 {

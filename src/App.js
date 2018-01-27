@@ -9,7 +9,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import './App.css';
 
 // Components
-import Main from './components/main';
+import Main from './components';
 
 const httpLink = new HttpLink({ uri: 'http://localhost:8080/graphql' });
 const wsLink = new WebSocketLink({

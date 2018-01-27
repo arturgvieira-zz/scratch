@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './header.css';
 import logo from './resources/logo.svg';
+
 class Header extends Component {
     render() {
         return (
@@ -14,12 +15,11 @@ class Header extends Component {
                 </article>
                 <nav>
                     <ul>
-                        <li>About</li>
                         <li>
-                            <Link to="/account">Sign Up</Link>
+                            <Link to="/about">About</Link>
                         </li>
                         <li>
-                            <Link to="/account/login">Login</Link>
+                            <Link to="/account">Account / Log in</Link>
                         </li>
                     </ul>
                 </nav>
