@@ -1,0 +1,46 @@
+header {
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    height: 20px;
+    padding: 15px 10px;
+    border-top: #00bcd4 5px solid;
+    border-bottom: #00bcd4 1px solid;
+}
+
+header a {
+    color: #555;
+    text-decoration: none;
+}
+
+header a:visited {
+    color: #555;
+}
+
+header .branding {
+    display: flex;
+}
+
+header .branding .logo {
+    height: 25px;
+    margin: 0 2px;
+}
+
+header .branding h2 {
+    color: #007485;
+    cursor: pointer;
+}
+
+header nav {
+    align-self: center;
+}
+
+header nav ul {
+    display: flex;
+    list-style: none;
+}
+
+header nav ul li {
+    margin: 0 15px;
+    cursor: pointer;
+}

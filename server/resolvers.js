@@ -1,12 +1,14 @@
 const query = require('./db');
 const uuidv4 = require('uuid/v4');
 const { PubSub } = require('graphql-subscriptions');
+const Util = require('./util');
+
 const pubSub = new PubSub();
 // The root provides a resolver function for each API endpoint
 module.exports = {
     //Query Resolvers
     Query: {
-        getPersonById: async (obj, args, context, info) => {
+        getPerson: async (obj, args, context, info) => {
             try {
                 let result = await query(
                     'MATCH (person:Person {id: $id}) RETURN *',
@@ -15,14 +17,7 @@ module.exports = {
                 );
                 //Dev only console
                 console.log('[#] [QUERY]: getPersonById(): [>] : ');
-                if (result) {
-                    result = result.map(result => ({
-                        ...result['properties']
-                    }));
-                    return result[0];
-                } else {
-                    return null;
-                }
+                return Util.unBoxSingleResult(result);
             } catch (err) {
                 throw new Error(err);
             }
@@ -36,14 +31,7 @@ module.exports = {
                 );
                 //Dev only console
                 console.log('[#] [QUERY]: getPersonByName(): [>] : ');
-                if (result) {
-                    result = result.map(result => ({
-                        ...result['properties']
-                    }));
-                    return result[0];
-                } else {
-                    return null;
-                }
+                return Util.unBoxSingleResult(result);
             } catch (err) {
                 throw new Error(err);
             }
@@ -57,11 +45,33 @@ module.exports = {
                 );
                 //Dev only console
                 console.log('[#] [QUERY]: getPeople(): [>] : ');
-                if (results) {
-                    return results.map(result => ({ ...result['properties'] }));
-                } else {
-                    return [];
-                }
+                return Util.unBoxManyResults(results);
+            } catch (err) {
+                throw new Error(err);
+            }
+        },
+        getMessage: async (obj, args, context, info) => {
+            try {
+                let result = await query(
+                    'MATCH (message:Message) RETURN *',
+                    args,
+                    'message'
+                );
+                console.log('[#] [QUERY]: getMessage(): [>] : ');
+                return Util.unBoxSingleResult(result);
+            } catch (err) {
+                throw new Error(err);
+            }
+        },
+        getActorMessages: async (obj, args, context, info) => {
+            try {
+                let results = await query(
+                    'MATCH (message:Message)<-[relationship:$relationship]-(person:Person {id: $id, name: $name}) RETURN message LIMIT 25',
+                    args,
+                    'message'
+                );
+                console.log('[#] [QUERY]: getMessage(): [>] : ');
+                return Util.unBoxManyResults(results);
             } catch (err) {
                 throw new Error(err);
             }
@@ -79,17 +89,11 @@ module.exports = {
                 );
                 //Dev only console
                 console.log('[#] [MUTATION]: createPerson(): [>] : ');
-                if (result) {
-                    result = result.map(result => ({
-                        ...result['properties']
-                    }));
-                    pubSub.publish('personChannel', {
-                        personChannel: result[0]
-                    });
-                    return result[0];
-                } else {
-                    return null;
-                }
+                result = Util.unBoxSingleResult(result);
+                pubSub.publish('personChannel', {
+                    personChannel: result
+                });
+                return result;
             } catch (err) {
                 throw new Error(err);
             }
@@ -113,12 +117,7 @@ module.exports = {
     Subscription: {
         //Subscription Resolvers
         personChannel: {
-            subscribe: () => {
-                console.log(
-                    '[#] [SUBSCRIPTION]: personChannel(): [>] : Connected'
-                );
-                pubSub.asyncIterator('personChannel');
-            }
+            subscribe: () => pubSub.asyncIterator('personChannel')
         }
     }
 };

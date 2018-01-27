@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
+import './splash.css';
+// Components
+import Hero from './components/hero/hero';
 
 class Splash extends Component {
     state = {
@@ -45,12 +48,10 @@ class Splash extends Component {
         const { api } = this.state;
 
         return (
-            <div className="Splash">
-                {api &&
-                    api.map((result, index) => (
-                        <p key={index}>{result.name}</p>
-                    ))}
-            </div>
+            <main className="Splash">
+                <Hero />
+                <p>Splash</p>
+            </main>
         );
     };
 }

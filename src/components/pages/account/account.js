@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
 // Components
-// import Register from './components/register/register';
-// import Login from './components/login/login';
+import Login from './components/login/login';
 
 class Account extends Component {
     state = {};
@@ -22,6 +22,12 @@ class Account extends Component {
         return (
             <div className="Account">
                 {this.state.hasError && this.warningBanner()}
+                <p>Account</p>
+                <Route
+                    exact
+                    path="/account/login"
+                    component={() => <Login />}
+                />
             </div>
         );
     };

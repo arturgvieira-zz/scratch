@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
-// Components
 
-class Register extends Component {
+class Login extends Component {
     state = {
         api: null
     };
@@ -16,18 +15,23 @@ class Register extends Component {
         this.setState({ api: query });
     };
 
+    warningBanner = props => <div className="error">Error!</div>;
+
     render = () => {
         const { api } = this.state;
 
-        return <div className="Register" />;
+        return (
+            <div className="Login">
+                <p>Login</p>
+            </div>
+        );
     };
 }
 
 const query = gql`
     {
-        fullName
         hello
     }
 `;
 
-export default graphql(query, { name: 'query' })(Register);
+export default graphql(query, { name: 'query' })(Login);

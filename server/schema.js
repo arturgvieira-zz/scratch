@@ -4,8 +4,10 @@ const resolvers = require('./resolvers');
 const typeDefs = `
 type Query {
     getPersonByName(name: String): Person
-    getPersonById(id: ID): Person
+    getPerson(id: ID): Person
     getPeople: [Person]
+    getMessage(id: ID): Message
+    getActorMessages(id: ID): [Message]
 }
 
 type Mutation {
@@ -18,6 +20,11 @@ type Subscription {
 }
 
 type Person {
+    id: ID
+    name: String
+}
+
+type Message {
     id: ID
     name: String
 }
