@@ -3,21 +3,22 @@ import { Link } from 'react-router-dom';
 import './drawer.css';
 
 class Drawer extends Component {
-    componentDidMount() {
-        document.addEventListener('keyup', e => {
-            if (e.keyCode === 27) this.handleClose();
-        });
+    setListener() {
         document.addEventListener('mouseup', e => {
             e.preventDefault();
             this.handleClose();
         });
     }
 
-    componentDidUpdate() {
-        document.addEventListener('mouseup', e => {
-            e.preventDefault();
-            this.handleClose();
+    componentDidMount() {
+        document.addEventListener('keyup', e => {
+            if (e.keyCode === 27) this.handleClose();
         });
+        this.setListener();
+    }
+
+    componentDidUpdate() {
+        this.setListener();
     }
 
     handleClose = () => {
