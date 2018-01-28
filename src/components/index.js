@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { HashRouter as Router, Route } from 'react-router-dom';
 import './main.css';
 // Components
-import Header from './presentation/header';
+import Header from './header';
 import Splash from './pages/splash';
 import About from './pages/about';
 import Account from './pages/account';
@@ -23,20 +23,20 @@ class Main extends Component {
         <div className="error">Sorry, something went wrong.</div>
     );
 
-    render() {
+    render = () => {
         return (
             <Router>
                 <div className="Main page">
                     {this.state.hasError && this.warningBanner()}
                     <Header />
                     <Route exact path="/" component={() => <Splash />} />
-                    <Route exact path="/about" component={() => <About />} />
+                    <Route path="/about" component={() => <About />} />
                     <Route path="/account" component={() => <Account />} />
                     <Route path="/dashboard" component={() => <Dashboard />} />
                 </div>
             </Router>
         );
-    }
+    };
 }
 
 export default Main;

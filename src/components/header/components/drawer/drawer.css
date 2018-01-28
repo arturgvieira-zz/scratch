@@ -1,0 +1,24 @@
+.Drawer {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background: white;
+    padding: 10px;
+    height: 100%;
+    border-left: #00bcd4 2px solid;
+}
+
+.Drawer h4 {
+    margin: 10px 0;
+}
+
+.Drawer a {
+    color: #555;
+    text-decoration: none;
+    margin: 10px 35px;
+}
+
+.Drawer a:visited {
+    color: #555;
+}
