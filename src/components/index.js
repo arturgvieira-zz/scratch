@@ -26,7 +26,7 @@ class Main extends Component {
     render = () => {
         return (
             <Router>
-                <div className="Main page">
+                <div className="Main">
                     {this.state.hasError && this.warningBanner()}
                     <Header />
                     <Route exact path="/" component={() => <Splash />} />

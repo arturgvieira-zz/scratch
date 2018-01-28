@@ -1,4 +1,22 @@
 .Hero {
-    height: 250px;
-    margin: 5px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 700px;
+}
+
+.Hero p {
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 1000px) {
+    .Hero {
+        height: 375px;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .Hero {
+        height: 150px;
+    }
 }

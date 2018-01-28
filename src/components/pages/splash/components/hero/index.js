@@ -5,7 +5,7 @@ class Hero extends Component {
     render() {
         return (
             <section role="presentation" className="Hero elevation-2dp">
-                <p>Hero</p>
+                <h1 className="centered-content">Hero</h1>
             </section>
         );
     }

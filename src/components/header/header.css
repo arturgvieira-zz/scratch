@@ -1,9 +1,14 @@
 header {
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    max-width: 1200px;
     height: 50px;
     display: flex;
+    align-items: flex-start;
     justify-content: space-between;
-    height: 20px;
-    padding: 15px 10px;
+    background: white;
     border-top: #00bcd4 5px solid;
     border-bottom: #00bcd4 1px solid;
 }
@@ -19,6 +24,7 @@ header a:visited {
 
 header .branding {
     display: flex;
+    margin: 10px;
 }
 
 header .branding .logo {
@@ -37,10 +43,11 @@ header nav {
 
 header .menu {
     display: none;
+    margin: 10px;
 }
 
 header nav a {
-    margin: 10px;
+    margin: 10px 15px;
 }
 
 @media screen and (max-width: 1000px) {

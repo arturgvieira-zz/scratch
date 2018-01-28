@@ -1,7 +1,28 @@
-.Splash {
+.Splash section {
+    display: flex;
+    justify-content: space-around;
 }
 
-.Splash .content {
-    height: 500px;
+.Splash section .content {
+    flex-basis: 33%;
+    min-height: 250px;
     background: grey;
+}
+
+@media screen and (max-width: 1000px) {
+    .Splash section {
+        flex-wrap: wrap;
+    }
+
+    .Splash section .content {
+        margin: 1%;
+        flex-basis: 45%;
+        flex-grow: 1;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .Splash section {
+        flex-direction: column;
+    }
 }
