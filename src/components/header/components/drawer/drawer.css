@@ -1,5 +1,4 @@
 .Drawer {
-    z-index: 1;
     position: fixed;
     display: flex;
     flex-direction: row-reverse;
