@@ -28,13 +28,13 @@ class Drawer extends Component {
     render = () => {
         return (
             <div id="drawer" className="Drawer elevation-16dp">
-                <Link to="/">
+                <Link to="/" aria-haspopup="true">
                     <h4>kami</h4>
                 </Link>
-                <Link to="/account">
+                <Link to="/account" aria-haspopup="true">
                     <p>Account / Log in</p>
                 </Link>
-                <Link to="/about">
+                <Link to="/about" aria-haspopup="true">
                     <p>About</p>
                 </Link>
             </div>

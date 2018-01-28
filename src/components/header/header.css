@@ -35,9 +35,8 @@ header nav {
     align-self: center;
 }
 
-header nav .menu {
+header .menu {
     display: none;
-    cursor: pointer;
 }
 
 header nav a {
@@ -45,8 +44,9 @@ header nav a {
 }
 
 @media screen and (max-width: 1000px) {
-    header nav .menu {
-        display: initial;
+    header .menu {
+        cursor: pointer;
+        display: block;
     }
 
     header nav a {

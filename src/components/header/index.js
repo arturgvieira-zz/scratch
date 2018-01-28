@@ -31,17 +31,16 @@ class Header extends Component {
                         </Link>
                     </article>
                     <nav>
-                        <img
-                            src={menu}
-                            alt="Menu"
-                            className="menu"
-                            onClick={this.handleClick}
-                            aria-haspopup="true"
-                        />
-
                         <Link to="/about">About</Link>
                         <Link to="/account">Account / Log in</Link>
                     </nav>
+                    <img
+                        src={menu}
+                        alt="Menu"
+                        className="menu"
+                        onClick={this.handleClick}
+                        aria-haspopup="true"
+                    />
                 </header>
             </div>
         );
