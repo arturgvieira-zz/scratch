@@ -48,10 +48,10 @@ class Splash extends Component {
         const { api } = this.state;
 
         return (
-            <main className="Splash">
+            <div className="Splash">
                 <Hero />
                 <p>Splash</p>
-            </main>
+            </div>
         );
     };
 }

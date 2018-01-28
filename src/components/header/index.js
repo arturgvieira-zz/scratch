@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 import './header.css';
 import logo from './resources/logo.svg';
@@ -31,8 +30,8 @@ class Header extends Component {
                         </Link>
                     </article>
                     <nav>
-                        <Link to="/about">About</Link>
-                        <Link to="/account">Account / Log in</Link>
+                        <Link to="/about" replace >About</Link>
+                        <Link to="/account" replace >Account / Log in</Link>
                     </nav>
                     <img
                         src={menu}
