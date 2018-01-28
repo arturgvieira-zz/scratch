@@ -1,2 +1,3 @@
-.Account {
+.Account .active h3 {
+    border-bottom: #555 1px solid;
 }

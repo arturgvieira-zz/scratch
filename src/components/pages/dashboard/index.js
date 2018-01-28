@@ -46,7 +46,7 @@ class Dashboard extends Component {
         const { api } = this.state;
 
         return (
-            <div className="Dashboard">
+            <div className="Dashboard page">
                 <p className="content">Dashboard</p>
             </div>
         );

@@ -1,0 +1,9 @@
+.Pane {
+    width: 100%;
+    flex-basis: 100%;
+}
+
+.Pane h3 {
+    border: #555 1px solid;
+    cursor: pointer;
+}
