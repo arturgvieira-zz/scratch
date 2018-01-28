@@ -1,8 +1,15 @@
-header {
+.Header {
     position: fixed;
     top: 0;
     z-index: 1;
     width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+.Header header {
+    flex-basis: 100%;
     max-width: 1200px;
     height: 50px;
     display: flex;
@@ -13,50 +20,50 @@ header {
     border-bottom: #00bcd4 1px solid;
 }
 
-header a {
+.Header header a {
     color: #555;
     text-decoration: none;
 }
 
-header a:visited {
+.Header header a:visited {
     color: #555;
 }
 
-header .branding {
+.Header header .branding {
     display: flex;
     margin: 10px;
 }
 
-header .branding .logo {
+.Header header .branding .logo {
     height: 25px;
     margin: 0 2px;
 }
 
-header .branding h2 {
+.Header header .branding h2 {
     color: #007485;
     cursor: pointer;
 }
 
-header nav {
+.Header header nav {
     align-self: center;
 }
 
-header .menu {
+.Header header .menu {
     display: none;
     margin: 10px;
 }
 
-header nav a {
+.Header header nav a {
     margin: 10px 15px;
 }
 
 @media screen and (max-width: 1000px) {
-    header .menu {
+    .Header header .menu {
         cursor: pointer;
         display: block;
     }
 
-    header nav a {
+    .Header header nav a {
         display: none;
     }
 }

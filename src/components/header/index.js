@@ -20,7 +20,7 @@ class Header extends Component {
     render = () => {
         const { showDrawer } = this.state;
         return (
-            <div>
+            <div className="Header">
                 {showDrawer ? <Drawer onClose={this.handleClose} /> : null}
                 <header role="presentation" className="elevation-4dp">
                     <article className="branding">
@@ -30,8 +30,12 @@ class Header extends Component {
                         </Link>
                     </article>
                     <nav>
-                        <Link to="/about" replace >About</Link>
-                        <Link to="/account" replace >Account / Log in</Link>
+                        <Link to="/about" replace>
+                            About
+                        </Link>
+                        <Link to="/account" replace>
+                            Account / Log in
+                        </Link>
                     </nav>
                     <img
                         src={menu}

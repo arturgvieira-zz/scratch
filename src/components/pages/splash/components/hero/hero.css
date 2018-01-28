@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 700px;
+    height: 500px;
 }
 
 .Hero p {
@@ -17,6 +17,6 @@
 
 @media screen and (max-width: 750px) {
     .Hero {
-        height: 150px;
+        height: 200px;
     }
 }

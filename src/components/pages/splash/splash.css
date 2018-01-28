@@ -1,12 +1,21 @@
 .Splash section {
     display: flex;
     justify-content: space-around;
+    margin: 10px 0;
 }
 
 .Splash section .content {
     flex-basis: 33%;
     min-height: 250px;
+    color: white;
     background: grey;
+}
+
+.Splash section .filler {
+    flex-basis: 100%;
+    min-height: 1250px;
+    color: white;
+    background: black;
 }
 
 @media screen and (max-width: 1000px) {

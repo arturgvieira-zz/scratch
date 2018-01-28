@@ -12,6 +12,9 @@ class Splash extends Component {
                     <p className="content">Splash</p>
                     <p className="content">Splash</p>
                 </section>
+                <section>
+                    <p className="filler">Filler</p>
+                </section>
             </div>
         );
     };
