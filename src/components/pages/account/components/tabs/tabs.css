@@ -4,6 +4,12 @@
 }
 
 .Tabs .titles {
+    flex-basis: 100%;
     display: flex;
     justify-content: space-around;
+}
+
+.Tabs .titles .active {
+    color: white;
+    background: grey;
 }

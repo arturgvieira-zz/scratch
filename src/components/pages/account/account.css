@@ -1,10 +1,12 @@
 .Account h3 {
-    border: white 1px solid;
     border-bottom: none;
     cursor: pointer;
 }
 
 .Account .filler {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 350px;
     color: white;
     background: gray;
