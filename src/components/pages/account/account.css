@@ -1,3 +1,11 @@
-.Account .active h3 {
-    border-bottom: #555 1px solid;
+.Account h3 {
+    border: white 1px solid;
+    border-bottom: none;
+    cursor: pointer;
+}
+
+.Account .filler {
+    height: 350px;
+    color: white;
+    background: gray;
 }
