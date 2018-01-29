@@ -11,11 +11,10 @@ class Tabs extends Component {
     setTabs(index) {
         let activeIndex = null;
         let body = null;
-        if (!index) {
+        if (undefined === index) {
             activeIndex = this.props.children.reduce((acc, next, index) => {
-                if (next.props.active) acc = index;
-                return acc;
-            }, 0);
+                if (next.props.active) return index;
+            });
             body = this.props.children.filter(node => node.props.active);
         } else {
             activeIndex = index;

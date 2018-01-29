@@ -8,14 +8,14 @@ class Account extends Component {
         return (
             <div className="Account page">
                 <Tabs>
-                    <Pane label="Title 1" active>
+                    <Pane label="Register">
                         <section className="filler">
-                            <h2>Filler 1</h2>
+                            <h2>Register</h2>
                         </section>
                     </Pane>
-                    <Pane label="Title 2">
+                    <Pane label="Login" active>
                         <section className="filler">
-                            <h2>Filler 2</h2>
+                            <h2>Login</h2>
                         </section>
                     </Pane>
                 </Tabs>
