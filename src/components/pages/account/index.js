@@ -13,9 +13,9 @@ class Account extends Component {
                             <h2>Register</h2>
                         </section>
                     </Pane>
-                    <Pane label="Login" active>
+                    <Pane label="Sign in" active>
                         <section className="filler">
-                            <h2>Login</h2>
+                            <h2>Sign in</h2>
                         </section>
                     </Pane>
                 </Tabs>

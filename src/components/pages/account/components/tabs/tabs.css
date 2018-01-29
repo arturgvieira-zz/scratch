@@ -3,13 +3,22 @@
     flex-direction: column;
 }
 
-.Tabs .titles {
-    flex-basis: 100%;
+.Tabs .header {
     display: flex;
     justify-content: space-around;
 }
 
-.Tabs .titles .active {
+.Tabs .header .titles {
+    flex-basis: 100%;
+    margin: 0;
+}
+
+.Tabs .header .titles.active {
     color: white;
-    background: grey;
+    background: #007485;
+}
+
+.Tabs .body {
+    margin: 3px 0;
+    border-bottom: #05e0ff 5px solid;
 }

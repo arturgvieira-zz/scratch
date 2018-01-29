@@ -44,7 +44,7 @@ class Tabs extends Component {
         const { titles, body } = this.state;
         return (
             <div className="Tabs">
-                <div className="titles">{titles}</div>
+                <div className="header elevation-1dp">{titles}</div>
                 <div className="body">{body}</div>
             </div>
         );

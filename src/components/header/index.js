@@ -34,7 +34,7 @@ class Header extends Component {
                             About
                         </Link>
                         <Link to="/account" replace>
-                            Account / Log in
+                            Account / Sign in
                         </Link>
                     </nav>
                     <img
